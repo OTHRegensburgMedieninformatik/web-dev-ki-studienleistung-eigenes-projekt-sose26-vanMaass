@@ -1,0 +1,27 @@
+<div class="gallery-container">
+  <div class="gallery-wrapper">
+    <button class="gallery-btn gallery-btn-prev" id="galleryPrev">❮</button>
+    
+    <div class="gallery-items" id="galleryItems">
+      <!-- Galerie-Elemente aus Datenbank -->
+      {{#each products}}
+      <div class="gallery-item">
+        {{#each bilder}}
+        {{#if @first}}
+        <img src="/images/{{bildurl}}" alt="{{../titel}}">
+        {{/if}}
+        {{/each}}
+        {{#unless bilder}}
+        <img src="/images/placeholder.png" alt="Keine Bilder verfügbar">
+        {{/unless}}
+        <h3>{{titel}}</h3>
+        <p>{{kurzbeschreibung}}</p>
+      </div>
+      {{/each}}
+    </div>
+    
+    <button class="gallery-btn gallery-btn-next" id="galleryNext">❯</button>
+  </div>
+</div>
+
+<script src="/gallery.js"></script>

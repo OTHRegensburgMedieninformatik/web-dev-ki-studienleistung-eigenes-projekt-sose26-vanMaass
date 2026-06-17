@@ -1,0 +1,46 @@
+{{> menu }}
+
+<!-- Bild -->
+<div style="padding: 20px; display: flex; justify-content: center;">
+  <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 10px;">
+    <img src="/images/example.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Example image">
+  </div>
+</div>
+
+<div >
+  
+  <div style ="margin-top: 20px;" align="center">
+    <h1>Authentisch echte Wallpaper</h1>
+  </div>
+  
+  {{> gallerydb }}
+  <div style="position: absolute; left:40px; margin-top: 0;">
+      <a href="/about" class="explore-btn" style="text-decoration: none; color: black; display: inline-block;">
+        Zur Galerie
+      </a>
+      
+  </div>
+  
+  {{> dynamic }}
+
+  <div class="category-section kategorie-fotografien">
+    <div class="category-overlay"></div>
+    <h1 class="category-title">Fotografien</h1>
+    <!-- Button -->
+    <div style="position: absolute; top: 68%; left: 50%; transform: translateX(-50%);">
+      <button class="explore-btn">Alle entdecken</button>
+    </div>
+  </div>
+
+  <div class="category-section kategorie-grafiken">
+    <div class="category-overlay"></div>
+    <h1 class="category-title">Grafiken</h1>
+    <!-- Button -->
+    <div style="position: absolute; top: 68%; left: 50%; transform: translateX(-50%);">
+      <button class="explore-btn">Alle entdecken</button>
+    </div>
+  </div>
+</div>
+
+
+  {{> aboutme }}

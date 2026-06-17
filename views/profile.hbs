@@ -1,0 +1,64 @@
+{{> menu id="profile"}}
+
+<div align="center" style="margin-top: 100px;">
+  <h2 class="category-titel">Dein Profil</h2>
+  <div style="padding: 50px 20px; margin-top:100px; display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
+    <!-- Profil ändern -->  
+    <div class="profile-section" style="max-width: 500px; width: 100%;">
+      <form action="/profile/update" method="POST">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Vorname</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" value="{{this.session.user.firstName}}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Nachname</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" value="{{this.session.user.lastName}}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" value="{{this.session.user.email}}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Neues Passwort (optional)</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Leer lassen zum Beibehalten">
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;" >
+          <button type="submit" class="explore-btn">Speichern</button>
+          <a href="/" class="explore-btn">Abbrechen</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bestellhistorie -->
+  <h2 class="category-titel" style="margin-top: 60px;">Deine Bestellungen</h2>
+  <div style="padding: 20px; max-width: 800px; width: 100%; margin: 20px auto;">
+    {{#if orders.length}}
+      {{#each orders}}
+      <div style="background-color: rgb(238, 238, 238); border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <strong>Bestellung #{{this.id}}</strong>
+          <span style="color: #666;">{{this.ordered_at}}</span>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          {{#each this.items}}
+          <li style="display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #ddd;">
+            <span>{{this.titel}}</span>
+            <span>{{this.preis}} €</span>
+          </li>
+          {{/each}}
+        </ul>
+        <div style="text-align: right; margin-top: 10px; font-weight: bold;">
+          Gesamt: {{this.total}} €
+        </div>
+      </div>
+      {{/each}}
+    {{else}}
+      <p>Du hast noch keine Bestellungen.</p>
+    {{/if}}
+  </div>
+</div>

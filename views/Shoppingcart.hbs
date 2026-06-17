@@ -1,0 +1,33 @@
+{{> menu id="shoppingcart"}} 
+
+<div align="center" style="margin-top: 100px;">
+  <h2 class="category-titel">Dein Warenkorb</h2>
+  <div style="padding: 50px 20px; margin-top:100px; display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
+    <!-- Beispielartikel im Warenkorb -->
+    {{#unless cartItems.length}}
+      <p>Dein Warenkorb ist leer. <a href="/about">Jetzt shoppen!</a></p>
+    {{else}}
+        {{#each cartItems}}
+        <div class="cart-item" style="width: 300px; background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px;">
+        <h3>{{this.titel}}</h3>
+        <p>Preis: {{this.preis}} €</p>
+        <p>Menge: {{this.quantity}}</p>
+        <form action="/cart/remove/{{this.id}}" method="POST" style="margin-top: 10px;">
+          <button type="submit" class="explore-btn">Aus Warenkorb entfernen</button>
+        </form>
+        </div>
+        {{/each}}
+    {{/unless}}
+    <!-- Weitere Artikel können hier hinzugefügt werden -->
+  </div>
+
+  {{#if cartItems.length}}
+  <div style="margin-top: 30px; margin-bottom: 50px; text-align: center;">
+    <h3>Gesamt: {{total}} €</h3>
+    <form action="/cart/checkout" method="POST">
+      <button type="submit" class="shop-btn" style="font-size: 18px; padding: 15px 40px;">Jetzt kaufen</button>
+    </form>
+  </div>
+  {{/if}}
+
+</div>

@@ -1,0 +1,20 @@
+<div class="shop-gallery-container">
+  {{#each products}}
+  <a href="/detail/{{id}}" style="text-decoration: none; color: inherit;">
+    <div class="shop-item">
+      {{#each bilder}}
+      {{#if @first}}
+      <img src="/images/{{bildurl}}" alt="{{../titel}}">
+      {{/if}}
+      {{/each}}
+      {{#unless bilder}}
+      <img src="/images/placeholder.png" alt="Keine Bilder verfügbar">
+      {{/unless}}
+      <div class="shop-item-info">
+        <h3>{{titel}}</h3>
+        <p class="price">€ {{preis}}</p>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+</div>

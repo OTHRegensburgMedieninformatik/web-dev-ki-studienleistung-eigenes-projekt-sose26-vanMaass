@@ -1,0 +1,32 @@
+{{> menu id="about"}}
+
+<div align="center" style="margin-top: 150px; ">
+  <h2 class="category-titel">Wallpaper müssen nicht langweilig sein.</h2>
+  <div style="padding: 50px 20px; margin-top:150px; display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
+    
+    <!-- Filter: Dynamisch/Statisch -->
+    <div class="filter-group">
+      <button class="filter-btn active">Alle</button>
+      <button class="filter-btn">Dynamisch</button>
+      <button class="filter-btn">Statisch</button>
+    </div>
+
+    <!-- Filter: Foto/Grafik -->
+    <div class="filter-group">
+      <button class="filter-btn active">Alle</button>
+      <button class="filter-btn">Foto</button>
+      <button class="filter-btn">Grafik</button>
+    </div>
+
+    <!-- Filter: Farbe -->
+    <div class="filter-group">
+      <button class="filter-btn active">Alle</button>
+      <button class="filter-btn" style="background-color: #FF6B6B; color: white;"></button>
+      <button class="filter-btn" style="background-color: #5fcd4e; color: white;"></button>
+      <button class="filter-btn" style="background-color: #FFD93D; color: black;"></button>
+      <button class="filter-btn" style="background-color: #2C3E50; color: white;"></button>
+    </div>
+
+  </div>
+  {{>shopgallery}}
+</div>

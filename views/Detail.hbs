@@ -1,0 +1,48 @@
+{{> menu id="detail"}}
+
+<div align="left" style="margin-top: 20px; padding: 0 20px;">
+    <a href="/about" style="text-decoration: none; color: grey;">Zurück zur Übersicht</a>
+</div>
+
+
+
+<!-- Zwei Spalten: Bild links, Kaufoptionen rechts -->
+<div style="display: flex; gap: 30px; margin-top: 30px; padding: 0 20px;">
+
+    <div style="width: 70%;">
+        <div style="width: 100%; height: 600px; overflow: hidden; border-radius: 10px;">
+            {{#each product.bilder}}
+            {{#if @first}}
+            <img src="/images/{{bildurl}}" style="width: 100%; height: 100%; object-fit: cover;" alt="{{../product.titel}}">
+            {{/if}}
+            {{/each}}
+            {{#unless product.bilder}}
+            <img src="/images/placeholder.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Keine Bilder verfügbar">
+            {{/unless}}
+        </div>
+    </div>
+
+    <!-- Rechte Spalte: Kaufoptionen -->
+    
+    <div style="width: 30%;  padding: 30px; ">
+        
+    <div style="margin-top: 50px; ">
+        <h2 class="category-titel">{{product.titel}}</h2>
+    </div>
+        <p style="margin-top: 0;">{{product.kurzbeschreibung}}</p>
+        <p style="font-size: 15px; ">€ {{product.preis}} </p>
+        <p style="font-size: 15px; color: grey"> inkl. Steuern.</p>
+        <form action="/cart/add" method="POST" style="display: inline;">
+            <input type="hidden" name="productId" value="{{product.id}}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="shop-btn">In den Warenkorb</button>
+        </form>
+
+    </div>
+</div>
+
+<!-- Beschreibung unten -->
+<div style="margin-top: 50px; padding: 0 20px; margin-bottom: 50px;">
+    <h3>Beschreibung</h3>
+    <p>{{product.beschreibung}}</p>
+</div>
