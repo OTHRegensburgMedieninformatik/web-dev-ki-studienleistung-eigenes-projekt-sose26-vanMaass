@@ -40,11 +40,13 @@ const accounts = {
                 firstName: authenticatedUser.firstName,
                 lastName: authenticatedUser.lastName,
                 email: authenticatedUser.email,
+                isAdmin: authenticatedUser.isAdmin,
             };
             logger.info("User successfully authenticated and added to session", authenticatedUser);
             response.redirect(request.body.referer || "/");
         } else {
             response.redirect("/login");
+            //express flash message error (npmjs)
         }
     },
 

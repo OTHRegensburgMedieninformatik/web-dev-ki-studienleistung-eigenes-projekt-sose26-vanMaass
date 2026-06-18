@@ -267,6 +267,47 @@ const productStore = {
         }
     },
 
+    async addProduct(product) {
+        const query = `
+            INSERT INTO "MarsStore".produkte (titel, kurzbeschreibung, beschreibung, preis, kategorie, bewegung, farben, status)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING id
+        `;
+        const values = [
+            product.titel,
+            product.kurzbeschreibung,
+            product.beschreibung,
+            product.preis,
+            product.kategorie,
+            product.bewegung,
+            product.farben ? JSON.stringify(product.farben) : null,
+            product.status || 'Normal'
+        ];
+        try {
+            const result = await dataStoreClient.query(query, values);
+            logger.info("Product added", { id: result.rows[0].id });
+            return result.rows[0].id;
+        } catch (e) {
+            logger.error("Error adding product", e);
+            throw e;
+        }
+    },
+
+    async addImage(produktId, bildurl, reihenfolge, isHauptbild) {
+        const query = `
+            INSERT INTO "MarsStore".bilder (produktid, bildurl, reihenfolge, ishauptbild)
+            VALUES ($1, $2, $3, $4)
+        `;
+        const values = [produktId, bildurl, reihenfolge, isHauptbild];
+        try {
+            await dataStoreClient.query(query, values);
+            logger.info("Image added", { produktId, bildurl });
+        } catch (e) {
+            logger.error("Error adding image", e);
+            throw e;
+        }
+    },
+
 };
 
 module.exports = productStore;

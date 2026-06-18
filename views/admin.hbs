@@ -1,0 +1,69 @@
+{{> menu id="admin"}}
+
+<div align="center" style="margin-top: 100px;">
+  <h2 class="category-titel">Produkt hinzufügen</h2>
+  <div style="padding: 50px 20px; margin-top: 50px; max-width: 600px; width: 100%;">
+    <form action="/admin/product" method="POST" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label for="titel" class="form-label">Titel</label>
+        <input type="text" class="form-control" id="titel" name="titel" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="kurzbeschreibung" class="form-label">Kurzbeschreibung</label>
+        <input type="text" class="form-control" id="kurzbeschreibung" name="kurzbeschreibung" maxlength="200">
+      </div>
+
+      <div class="mb-3">
+        <label for="beschreibung" class="form-label">Beschreibung</label>
+        <textarea class="form-control" id="beschreibung" name="beschreibung" rows="4"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="preis" class="form-label">Preis (€)</label>
+        <input type="number" class="form-control" id="preis" name="preis" step="0.01" min="0" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="kategorie" class="form-label">Kategorie</label>
+        <select class="form-control" id="kategorie" name="kategorie" required>
+          <option value="Foto">Foto</option>
+          <option value="Grafik">Grafik</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="bewegung" class="form-label">Bewegung</label>
+        <select class="form-control" id="bewegung" name="bewegung" required>
+          <option value="Statisch">Statisch</option>
+          <option value="Dynamisch">Dynamisch</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" id="status" name="status">
+          <option value="Normal">Normal</option>
+          <option value="Neu">Neu</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="farben" class="form-label">Farben (kommagetrennt)</label>
+        <input type="text" class="form-control" id="farben" name="farben" placeholder="rot, grün, gelb, blau">
+      </div>
+
+      <div class="mb-3">
+        <label for="bilder" class="form-label">Bilder hochladen</label>
+        <input type="file" class="form-control" id="bilder" name="bilder" multiple accept="image/*">
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button type="submit" class="shop-btn">Produkt anlegen</button>
+        <a href="/about" class="explore-btn">Abbrechen</a>
+      </div>
+
+    </form>
+  </div>
+</div>

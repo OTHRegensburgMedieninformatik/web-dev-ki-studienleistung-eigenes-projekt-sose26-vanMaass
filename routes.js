@@ -4,6 +4,7 @@ const router = express.Router();
 const home = require("./controllers/home.js");
 const about = require("./controllers/about.js");
 const accounts = require("./controllers/accounts.js");
+const admin = require("./controllers/admin.js");
 
 router.get("/", home.index);
 router.get("/about", about.index);
@@ -20,5 +21,7 @@ router.post("/cart/add", home.addToCart);
 router.post("/cart/remove/:id", home.removeFromCart);
 router.post("/cart/update/:id", home.updateQuantity);
 router.post("/cart/checkout", home.checkout);
+router.get("/admin/product", admin.addProduct);
+router.post("/admin/product", admin.upload.array("bilder", 10), admin.saveProduct);
 
 module.exports = router;

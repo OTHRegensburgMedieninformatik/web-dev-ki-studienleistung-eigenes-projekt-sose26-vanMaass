@@ -18,7 +18,7 @@ const user = {
         try { 
             let dbRes = await dataStoreClient.query(query, values); 
             if (dbRes.rows[0] !== undefined) { 
-                return {id: email, firstName: dbRes.rows[0].first_name, lastName: dbRes.rows[0].last_name, email: dbRes.rows[0].email}; 
+                return {id: email, firstName: dbRes.rows[0].first_name, lastName: dbRes.rows[0].last_name, email: dbRes.rows[0].email, isAdmin: dbRes.rows[0].is_admin}; 
             } else { 
                 return undefined; 
             } 

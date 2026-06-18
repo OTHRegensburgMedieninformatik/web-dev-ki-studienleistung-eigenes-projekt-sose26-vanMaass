@@ -10,6 +10,11 @@
         <li class="nav-item">
           <a class="nav-link" id="about" href="/about">Wallpaper</a>
         </li>
+        {{#if this.session.user.isAdmin}}
+        <li class="nav-item">
+          <a class="nav-link" id="admin" href="/admin/product">add Produkt</a>
+        </li>
+        {{/if}}
       </ul>
     </div>
     <!-- Mars-Icon -->
