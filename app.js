@@ -22,7 +22,14 @@ app.use(session({
     saveUninitialized: false
 }));
 
-app.engine('.hbs', handlebars.engine({extname: '.hbs'}));
+app.engine('.hbs', handlebars.engine({
+    extname: '.hbs',
+    helpers: {
+        json: function(context) {
+            return JSON.stringify(context);
+        }
+    }
+}));
 app.set('view engine', '.hbs');
 app.set('views', './views');
 

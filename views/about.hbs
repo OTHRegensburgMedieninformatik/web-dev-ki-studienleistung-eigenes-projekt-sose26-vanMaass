@@ -5,28 +5,30 @@
   <div style="padding: 50px 20px; margin-top:150px; display: flex; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap;">
     
     <!-- Filter: Dynamisch/Statisch -->
-    <div class="filter-group">
-      <button class="filter-btn active">Alle</button>
-      <button class="filter-btn">Dynamisch</button>
-      <button class="filter-btn">Statisch</button>
+    <div class="filter-group" data-filter="bewegung">
+      <button class="filter-btn active" data-value="all">Alle</button>
+      <button class="filter-btn" data-value="Dynamisch">Dynamisch</button>
+      <button class="filter-btn" data-value="Statisch">Statisch</button>
     </div>
 
     <!-- Filter: Foto/Grafik -->
-    <div class="filter-group">
-      <button class="filter-btn active">Alle</button>
-      <button class="filter-btn">Foto</button>
-      <button class="filter-btn">Grafik</button>
+    <div class="filter-group" data-filter="kategorie">
+      <button class="filter-btn active" data-value="all">Alle</button>
+      <button class="filter-btn" data-value="Foto">Foto</button>
+      <button class="filter-btn" data-value="Grafik">Grafik</button>
     </div>
 
     <!-- Filter: Farbe -->
-    <div class="filter-group">
-      <button class="filter-btn active">Alle</button>
-      <button class="filter-btn" style="background-color: #FF6B6B; color: white;"></button>
-      <button class="filter-btn" style="background-color: #5fcd4e; color: white;"></button>
-      <button class="filter-btn" style="background-color: #FFD93D; color: black;"></button>
-      <button class="filter-btn" style="background-color: #2C3E50; color: white;"></button>
+    <div class="filter-group" data-filter="farbe">
+      <button class="filter-btn active" data-value="all">Alle</button>
+      <button class="filter-btn" data-value="#FF6B6B" style="background-color: #FF6B6B; color: white;"></button>
+      <button class="filter-btn" data-value="#5fcd4e" style="background-color: #5fcd4e; color: white;"></button>
+      <button class="filter-btn" data-value="#FFD93D" style="background-color: #FFD93D; color: black;"></button>
+      <button class="filter-btn" data-value="#2C3E50" style="background-color: #2C3E50; color: white;"></button>
     </div>
 
   </div>
   {{>shopgallery}}
 </div>
+
+<script src="/filter.js"></script>

@@ -1,7 +1,7 @@
 <div class="shop-gallery-container">
   {{#each products}}
   <a href="/detail/{{id}}" style="text-decoration: none; color: inherit;">
-    <div class="shop-item">
+    <div class="shop-item" data-kategorie="{{kategorie}}" data-bewegung="{{bewegung}}" data-farben='{{#if farben}}{{json farben}}{{else}}[]{{/if}}'>
       {{#each bilder}}
       {{#if @first}}
       <img src="/images/{{bildurl}}" alt="{{../titel}}">
