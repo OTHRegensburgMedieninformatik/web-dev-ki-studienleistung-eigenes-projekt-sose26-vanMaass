@@ -43,10 +43,15 @@ const accounts = {
                 isAdmin: authenticatedUser.isAdmin,
             };
             logger.info("User successfully authenticated and added to session", authenticatedUser);
-            response.redirect(request.body.referer || "/");
+            const referer = request.body.referer;
+            //referer ist die Seite, von der der User kommt, wenn er nicht von /login oder /authenticate kommt, dann redirect auf diese Seite, sonst redirect auf /
+            const target = (referer && !referer.includes("/login") && !referer.includes("/authenticate")) ? referer : "/";
+
+            response.redirect(target);
         } else {
+            //Fehlermeldung mit npm flash-message
+            await response.flash("error", "E-Mail oder Passwort falsch.");
             response.redirect("/login");
-            //express flash message error (npmjs)
         }
     },
 

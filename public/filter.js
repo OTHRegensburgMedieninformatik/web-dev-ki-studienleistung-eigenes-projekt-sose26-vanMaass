@@ -1,23 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const filterGroups = document.querySelectorAll(".filter-group");
-  const shopItems = document.querySelectorAll(".shop-gallery-container a");
+  const filterGroups = document.querySelectorAll(".filter-group"); // Alle Filtergruppen auswählen
+  const shopItems = document.querySelectorAll(".shop-gallery-container a"); // Alle Shop-Items auswählen (vom Typ <a>)
 
-  // Aktive Filter pro Gruppe
+  // Aktive Filter initial
   const activeFilters = {
     bewegung: "all",
     kategorie: "all",
     farbe: "all"
   };
 
+  // durch gruppen iterieren
   filterGroups.forEach(function (group) {
     const filterType = group.dataset.filter;
     const buttons = group.querySelectorAll(".filter-btn");
 
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        // Active-Klasse in dieser Gruppe umschalten
+        // Active entfernen und nur den geklickten Button aktiv setzen
         buttons.forEach(function (b) { b.classList.remove("active"); });
-        btn.classList.add("active");
+        btn.classList.add("active"); //für CSS
         activeFilters[filterType] = btn.dataset.value;
 
         applyFilters();
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
           show = false;
         }
       }
-
+      //display für <a> element setzen (ausblenden)
       link.style.display = show ? "" : "none";
     });
   }

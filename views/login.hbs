@@ -1,10 +1,14 @@
 {{> menu id='login'}} 
-<input type="hidden" name="referer" value="{{referer}}">
 
 <div class="row justify-content-center" style="margin-top: 50px;">
     <div class="col-3"> 
+        {{#each (getFlashMessages "error")}}
+        <p style="color: red;">{{this}}</p>
+        {{/each}}
         <h3>Einloggen</h3> 
         <form action="/authenticate" method="POST"> 
+        <input type="hidden" name="referer" value="{{referer}}">
+
             <div class="mb-3"> 
                 <label for="inputEmail" class="form-label">Email</label> 
                 <input type="email" class="form-control" id="inputEmail" name="email"> 
